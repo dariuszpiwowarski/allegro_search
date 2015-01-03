@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'search' => 'search#index'
   get 'search/search' => 'search#search'
 
-  resources :auctions only:, [:index, :create, :destroy]
+  resources :auctions, only: [:index, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
