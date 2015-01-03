@@ -2,7 +2,7 @@ This is a simple web app which allows to search Allegro, and save auctions.
 
 To run you need to:
 
-* run migration
+* run migrations
 
 * set your allegro web api credentials in config/environments/*rb. Allegro Web Api section at the bottom of the file.
 
