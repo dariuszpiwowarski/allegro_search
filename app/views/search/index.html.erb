@@ -1,0 +1,17 @@
+<h1>Allegro Search</h1>
+<div>
+  <p>
+  <%= label_tag ('Please choose a category') %>
+  <%= select_tag(:category_id, options_for_select(@categories)) %>
+  </p>
+  <p id="price">
+  <%= label_tag ('Price') %>
+  <%= text_field_tag 'price_from', nil, size: 6 %> - 
+  <%= text_field_tag 'price_to', nil, size: 6 %> 
+  </p>
+  <%= label_tag(:query, "Search for:") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search") %>
+</div>
+<div id="search_results">
+</div>

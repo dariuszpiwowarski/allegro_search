@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  parent: 1
+  position: 1
+  is_product_catalogue_enabled: false
+
+two:
+  name: MyString
+  parent: 1
+  position: 1
+  is_product_catalogue_enabled: false

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AllegroSearch</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <ul class="nav nav-pills">
+    <%= nav_link 'Search', root_path %>
+    <%= nav_link 'My auctions', auctions_path %>
+  </ul>
+</nav>
+<div class="container">
+  <%= yield %>
+</div>
+</body>
+</html>

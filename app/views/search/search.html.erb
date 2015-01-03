@@ -1,0 +1,35 @@
+<% #@res[:do_search_response][:search_count] %>
+<% if @res[:do_search_response][:search_count].to_i > 0 %>
+<div class="dropdown">
+  <% order_by_text = { '10' => 'Time ending ascending', '11' => 'Time ending descending',
+                       '40' => 'Price ascendind', '41' => 'Price descending' } %> 
+                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" data-sort_by="<%= @order_by %>" data-sort_type="<%= @order_type %>">
+    Sort by: <%= order_by_text[@order_by + @order_type] %>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a class="sort_by" data-sort_by='1' data-sort_type='0' role="menuitem" tabindex="-1" href="#"><%= order_by_text['10'] %></a></li>
+    <li role="presentation"><a class="sort_by" data-sort_by='1' data-sort_type='1' role="menuitem" tabindex="-1" href="#"><%= order_by_text['11'] %></a></li>
+    <li role="presentation"><a class="sort_by" data-sort_by='4' data-sort_type='0' role="menuitem" tabindex="-1" href="#"><%= order_by_text['40'] %></a></li>
+    <li role="presentation"><a class="sort_by" data-sort_by='4' data-sort_type='1' role="menuitem" tabindex="-1" href="#"><%= order_by_text['41'] %></a></li>
+  </ul>
+</div>
+<%= render "pager" %>
+<table class='table table-bordered'>
+  <% unless @res[:do_search_response][:search_array].nil? %>
+    <% @res[:do_search_response][:search_array][:item].each do |item| %>
+      <tr>
+        <td><img src="<%= item[:s_it_thumb_url] %>"></td>
+        <td><a href="http://allegro.pl/show_item.php?item=<%= item[:s_it_id] %>" target="_blank"><%= item[:s_it_name] %></a></td>
+        <td><%= item[:s_it_is_buy_now] == '1' ? 'buy now ' : '' %></td>
+        <td><%= item[:s_it_buy_now_price] ? item[:s_it_buy_now_price] : item[:s_it_price]  %></td>
+        <td><%= time_ago_in_words(item[:s_it_time_left].to_i.seconds.from_now) %></td>
+        <td><a class="add_to_my_auctions" href="#" data-url="http://allegro.pl/show_item.php?item=<%= item[:s_it_id] %>" data-name="<%= item[:s_it_name] %>">Add to my auctions</a></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<%= render "pager" %>
+<% else %>
+  <p>No results...</p>
+<% end %>

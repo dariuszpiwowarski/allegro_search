@@ -1,0 +1,14 @@
+<h1>Saved auctions</h1>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+<table>
+<% @auctions.each do |a| %>
+  <tr>
+    <td><a href="<%= a.url %>" target="_blank"><%= a.name %></td>
+    <td><%= link_to raw('<span class="glyphicon glyphicon-remove"></span>'), auction_path(a),
+              method: :delete,
+              data: { confirm: 'Are you sure you want to delete this auction?' } %></td>
+  </tr>
+<% end %>
+</table>
